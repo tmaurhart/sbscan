@@ -21,6 +21,7 @@
   "homepage": "https://github.com/tmaurhart/sbscan#readme",
   "dependencies": {},
   "devDependencies": {
-    "browser-sync": "^2.26.5"
+    "browser-sync": "^2.26.5",
+    "dependencies": "0.0.1"
   }
 }
