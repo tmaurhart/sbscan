@@ -116,6 +116,7 @@
                 })
                 .then(function (myJson) {
                     console.log(JSON.stringify(myJson));
+                    alert(myJson.volumeInfo.title);
                 }).catch(err => {
                     // Do something for an error here
                 });
