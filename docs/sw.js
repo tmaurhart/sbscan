@@ -8,7 +8,7 @@ self.addEventListener('install', function (e) {
                     'index.html',
                     'favicon.ico',
                     'css/style.css',
-                    'js/scandit-sdk@4.x',
+                    //'js/scandit-sdk@4.x',
                     'icons/favicon.ico',
                     'icons/android-chrome-192x192.png',
                     'icons/android-chrome-256x256.png',
@@ -18,6 +18,7 @@ self.addEventListener('install', function (e) {
                     'icons/favicon-32x32.png',
                     'icons/mstile-150x150.png',
                     'icons/safari-pinned-tab.svg',
+                    'images/logo.png',
                     'manifest.webmanifest'
                 ]);
             })
