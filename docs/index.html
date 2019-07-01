@@ -117,7 +117,12 @@
                 .then(function (myJson) {
                     //console.log(JSON.stringify(myJson));
                     var test = JSON.stringify(myJson);
-                    console.log(test.volumeInfo.title);
+                    console.log(myJson.volumeInfo.title);
+
+                    let commits = await response.json(); // read response body and parse as JSON
+
+                    alert(commits[0].author.login);
+
                     
                 }).catch(err => {
                     // Do something for an error here
