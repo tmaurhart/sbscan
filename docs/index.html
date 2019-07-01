@@ -58,7 +58,67 @@
     </div>
 
     <script>
-    
+        function scan() {
+            startScanning();
+        }
+
+        function showScanner() {
+            scannerContainer.style.opacity = "1";
+            scannerContainer.style.zIndex = "1";
+        }
+
+        function hideScanner() {
+            scannerContainer.style.opacity = "0";
+            scannerContainer.style.zIndex = "-1";
+        }
+
+        function startScanning() {
+            showScanner();
+            if (picker) {
+                picker.resumeScanning();
+            }
+        }
+
+        function stopScanning() {
+            hideScanner();
+            if (picker) {
+                picker.pauseScanning();
+            }
+        }
+
+        // Configure the library and activate it with a license key
+        const licenseKey = "ATld7A+9EoSVLzVhECyNRLMas3wxAyHtU1DHDWso6FQcIdDH3FkIr8dJD4oec+cd5nK5V98ihdysfOWu+Fztyh5dJRxMDQ7R4GBnj6tTQTPaLYvt4XeyZWdKrrehbEFLSCrIKrYUNiPACqCJii7l96DVKgG3uSss2mmIAYcsm4AjKEE1zhWVRMXKSEu80SUgQqBft0w+gOchIDpKY2+qkPJCsLEeGan7No4axuFvP8GtnOKDxfddLNKR+z858T9km1DufNz35br+aqzkxXjq5Qioj6l6NFqRvnvkdTXBeg/h+X5Z1c7GmZttCLqR1daSzfkK57/puRQ9cxTstx4GMbshF3/J8uYPaL999jnMowWaz2/zEr1RiQKq7zLxpLd35WfWf+Ad0CsMO0uAYToV6Z/BktX/Pi6G7l62rw8QKrkiRbXcvWq5PsZM8nP6j3oJuK/UMsMfBoIsFJVBzOqsvB1lRYoI+EqKFK78hSYhKHm4mScyfn+Ua8Whw5KH1kqSAFubRuBMqlnog2xs7gXMLRBNTahiHHvZYG1+2WtOzEXbBlz70kPW+i2hqFv/adn3D1X7nevs9jCDMgB2dQ7OtQJfqFgBCZplc2J3bAho769AsZJNZmStg3Co9UYADc8hjybiFmm8mOD1jHI2ovCwFscR+4FVL8jABpRJ7kalKZFkwg/To/nuYB587twRy6qI4CdV8bOL4yZ7nQIbiu9kxIiKk/bZmPpCWPwQvMgVh704rELyrSb7lkrz6j8SVBHJqbHs+tcZG8jCaxQM3SBbfAd1JQmXQIisfSvICx9In+gL/wwNjRXijsG4IA==";
+
+        // Configure the engine location, as explained on http://docs.scandit.com/stable/web/index.html
+        const engineLocation = "https://cdn.jsdelivr.net/npm/scandit-sdk@4.x/build"
+
+        ScanditSDK.configure(licenseKey, { engineLocation: engineLocation });
+
+        const scannerContainer = document.getElementById("scandit-barcode-picker");
+        scannerContainer.style.opacity = "0";
+        scannerContainer.style.zIndex = "-1";
+        const scanInput = document.getElementById("scan-input");
+        let picker;
+
+        // Create & start the picker
+        ScanditSDK.BarcodePicker.create(scannerContainer)
+            .then(barcodePicker => {
+                picker = barcodePicker;
+                // Create the settings object to be applied to the scanner
+                const scanSettings = new ScanditSDK.ScanSettings({
+                    enabledSymbologies: ["ean8", "ean13", "upca", "upce", "code128", "code39"]
+                });
+                picker.applyScanSettings(scanSettings);
+
+                picker.onScan(scanResult => {
+                    stopScanning();
+                    scanInput.value = scanResult.barcodes[0].data;
+                });
+                picker.onScanError(error => alert(error.message));
+                picker.resumeScanning();
+            })
+            .catch(alert);
+
         // Register the Service Worker
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker
