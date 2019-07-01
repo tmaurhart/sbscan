@@ -1,0 +1,49 @@
+{
+    "name": "SB-Scan",
+    "short_name": "SB-Scan",
+    "display": "standalone",
+    "scope": "/sbscan/",
+    "start_url": "/sbscan/",
+    "orientation": "portrait",
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "description": "SB Scanner",
+    "icons": [
+        {
+            "src": "icons/icon512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/icon16.png",
+            "sizes": "16x16",
+            "type": "image/png",
+            "purpose": "badge"
+        },
+        {
+            "src": "icons/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ]
+}
