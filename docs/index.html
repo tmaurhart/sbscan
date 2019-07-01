@@ -122,7 +122,7 @@
                     scanInput.value = scanResult.barcodes[0].data;
 
                     alert(scanResult.barcodes.reduce((string, barcode) => {
-                        return string + `${Barcode.Symbology.toHumanizedName(barcode.symbology)}: ${barcode.data}\n`;
+                        return string + '${Barcode.Symbology.toHumanizedName(barcode.symbology)}: ${barcode.data}\n';
                     }, ""));
 
                 });
