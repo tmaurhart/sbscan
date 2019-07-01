@@ -153,11 +153,7 @@
                     stopScanning();
                     scanInput.value = scanResult.barcodes[0].data;
                     console.log(scanResult.barcodes[0].data);
-                    getBookDetails(scanResult.barcodes[0].data);
-
-                    /*alert(scanResult.barcodes.reduce((string, barcode) => {
-                        return string + '${Barcode.Symbology.toHumanizedName(barcode.symbology)}: ${barcode.data}\n';
-                    }, ""));*/
+                    //getBookDetails(scanResult.barcodes[0].data);
 
                 });
                 picker.onScanError(error => alert(error.message));
