@@ -1,0 +1,92 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#scandit-barcode-picker {
+    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+#input-container {
+    transform: translate(-50%, -50%);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+#scan-input {
+    border: 2px solid grey;
+    border-radius: 4px;
+
+    min-height: 45px;
+    height: 64px;
+    max-height: 5vh;
+
+    width: calc(500px - 70px - 20px);
+    max-width: calc(80vw - 70px - 20px);
+
+    padding: 10px 70px 10px 20px;
+    font-size: 1.5em;
+}
+
+#scan-input:focus,
+#scan-input:hover,
+#input-container:hover #scan-input {
+    outline: none;
+    border-color: #2EC1CE;
+}
+
+button,
+button:active,
+button[disabled]:hover {
+    --webkit-appearance: none;
+    border: none;
+    border-radius: none;
+    outline: none;
+    background: transparent;
+    padding: 0;
+}
+
+#scan {
+    position: absolute;
+    top: calc(50% + 1px);
+    right: 20px;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#scan svg {
+    --icon-size: 3em;
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+#scan svg g.base {
+    fill: black;
+}
+
+#scan:hover svg g.base {
+    fill: grey;
+}
+
+#scan:after {
+    content: "";
+    transform: rotate(100deg) translate(-100%, 2%);
+    height: 15vw;
+    max-height: 80px;
+    width: 15vw;
+    max-width: 80px;
+    display: block;
+    position: absolute;
+    top: -2px;
+    left: 20%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTYuMC4wLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjUxMnB4IiBoZWlnaHQ9IjUxMnB4IiB2aWV3Qm94PSIwIDAgNDE1LjI2MiA0MTUuMjYxIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA0MTUuMjYyIDQxNS4yNjE7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPGc+Cgk8cGF0aCBkPSJNNDE0LjkzNywzNzQuOTg0Yy03Ljk1Ni0yNC40NzktMjAuMTk2LTQ3LjczNi0zMC42MDEtNzAuOTkyYy0xLjIyNC0zLjA2LTYuMTItMy4wNi03Ljk1Ni0xLjIyNCAgIGMtMTAuNDAzLDExLjAxNi0yMi4wMzEsMjIuMDMyLTI4Ljc2NCwzNS40OTZoLTAuNjEyYy03NC42NjQsNS41MDgtMTQ2Ljg4LTU4LjE0MS0xOTguMjg4LTEwNC42NTIgICBjLTU5LjM2NC01My4yNDQtMTEzLjIyLTExOC4xMTYtMTM0LjY0LTE5NS44NGMtMS4yMjQtOS43OTItMi40NDgtMjAuMTk2LTIuNDQ4LTMwLjZjMC00Ljg5Ni02LjczMi00Ljg5Ni03LjM0NCwwICAgYzAsMS44MzYsMCwzLjY3MiwwLDUuNTA4QzEuODM2LDEyLjY4LDAsMTQuNTE2LDAsMTcuNTc2YzAuNjEyLDYuNzMyLDIuNDQ4LDEzLjQ2NCwzLjY3MiwyMC4xOTYgICBDOC41NjgsMjAzLjYyNCwxNzMuODA4LDM2My4zNTYsMzM1LjM3NiwzNzMuNzZjLTUuNTA4LDkuNzkyLTEwLjQwMywyMC4xOTUtMTYuNTIzLDI5Ljk4OGMtMy4wNjEsNC4yODMsMS44MzYsOC41NjcsNi4xMiw3Ljk1NSAgIGMzMC42LTQuMjgzLDU4LjE0LTE4Ljk3Miw4Ni4yOTItMjkuOTg3QzQxMy43MTIsMzgxLjEwNCw0MTYuMTYsMzc4LjY1Niw0MTQuOTM3LDM3NC45ODR6IE0zMzIuOTI4LDM5OS40NjQgICBjMy42NzMtNy45NTYsNi4xMi0xNS45MTIsMTAuNDA0LTIzLjg2OGMxLjIyNS0zLjA2MS0wLjYxMi01LjUwOC0yLjQ0OC02LjEyYzAtMS44MzYtMS4yMjQtMy4wNjEtMy4wNi0zLjY3MiAgIGMtMTQ2LjI2OC0yNC40OC0yNjQuOTk2LTEyNC4yMzYtMzA5LjA2LTI1OS40ODljMjguNzY0LDUzLjI0NCw3Mi44MjgsOTkuNzU2LDExNi4yOCwxMzguOTI0ICAgYzMxLjgyNCwyOC43NjUsNjUuNDg0LDU0LjQ2OCwxMDIuMjA0LDc1Ljg4OGMyOC43NjQsMTYuNTI0LDY0Ljg3MiwzMS44MjQsOTcuOTIsMjEuNDIxbDAsMGMtMS44MzYsNC44OTYsNS41MDgsNy4zNDQsNy45NTYsMy42NzIgICBjNy45NTYtMTAuNDA0LDE1LjkxMi0yMC4xOTYsMjQuNDgtMjkuMzc2YzguNTY3LDE4Ljk3MiwxNy43NDgsMzcuOTQzLDI0LjQ3OSw1Ny41MjcgICBDMzc5LjQ0LDM4Mi45NCwzNTYuNzk2LDM5My45NTYsMzMyLjkyOCwzOTkuNDY0eiIgZmlsbD0iI0Q4MDAyNyIvPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=);
+}
+
+/* Icon made by Freepik from www.flaticon.com is licensed by Creative Commons BY 3.0 - http://creativecommons.org/licenses/by/3.0/ */
