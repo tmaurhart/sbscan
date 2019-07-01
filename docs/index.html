@@ -120,8 +120,7 @@
                 picker.onScan(scanResult => {
                     stopScanning();
                     scanInput.value = scanResult.barcodes[0].data;
-
-                    getBookDetails(scanInput.value);
+                    getBookDetails(scanResult.barcodes[0].data);
 
                     /*alert(scanResult.barcodes.reduce((string, barcode) => {
                         return string + '${Barcode.Symbology.toHumanizedName(barcode.symbology)}: ${barcode.data}\n';
