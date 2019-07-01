@@ -93,6 +93,38 @@
             }
         }
 
+        function getBookDetails(isbn) {
+
+            // Query the book database by ISBN code.
+            //isbn = isbn || "9781451648546"; // Steve Jobs book 
+
+            var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
+
+            var response = UrlFetchApp.fetch(url);
+            var results = JSON.parse(response);
+
+            if (results.totalItems) {
+
+                // There'll be only 1 book per ISBN
+                var book = results.items[0];
+                var title = (book["volumeInfo"]["title"]);
+                var subtitle = (book["volumeInfo"]["subtitle"]);
+                var authors = (book["volumeInfo"]["authors"]);
+                var printType = (book["volumeInfo"]["printType"]);
+                var pageCount = (book["volumeInfo"]["pageCount"]);
+                var publisher = (book["volumeInfo"]["publisher"]);
+                var publishedDate = (book["volumeInfo"]["publishedDate"]);
+                var webReaderLink = (book["accessInfo"]["webReaderLink"]);
+
+                // For debugging
+                //console.log(book);
+
+                alert(title);
+
+            }
+
+        }
+
         // Configure the library and activate it with a license key
         const licenseKey = "ATld7A+9EoSVLzVhECyNRLMas3wxAyHtU1DHDWso6FQcIdDH3FkIr8dJD4oec+cd5nK5V98ihdysfOWu+Fztyh5dJRxMDQ7R4GBnj6tTQTPaLYvt4XeyZWdKrrehbEFLSCrIKrYUNiPACqCJii7l96DVKgG3uSss2mmIAYcsm4AjKEE1zhWVRMXKSEu80SUgQqBft0w+gOchIDpKY2+qkPJCsLEeGan7No4axuFvP8GtnOKDxfddLNKR+z858T9km1DufNz35br+aqzkxXjq5Qioj6l6NFqRvnvkdTXBeg/h+X5Z1c7GmZttCLqR1daSzfkK57/puRQ9cxTstx4GMbshF3/J8uYPaL999jnMowWaz2/zEr1RiQKq7zLxpLd35WfWf+Ad0CsMO0uAYToV6Z/BktX/Pi6G7l62rw8QKrkiRbXcvWq5PsZM8nP6j3oJuK/UMsMfBoIsFJVBzOqsvB1lRYoI+EqKFK78hSYhKHm4mScyfn+Ua8Whw5KH1kqSAFubRuBMqlnog2xs7gXMLRBNTahiHHvZYG1+2WtOzEXbBlz70kPW+i2hqFv/adn3D1X7nevs9jCDMgB2dQ7OtQJfqFgBCZplc2J3bAho769AsZJNZmStg3Co9UYADc8hjybiFmm8mOD1jHI2ovCwFscR+4FVL8jABpRJ7kalKZFkwg/To/nuYB587twRy6qI4CdV8bOL4yZ7nQIbiu9kxIiKk/bZmPpCWPwQvMgVh704rELyrSb7lkrz6j8SVBHJqbHs+tcZG8jCaxQM3SBbfAd1JQmXQIisfSvICx9In+gL/wwNjRXijsG4IA==";
 
@@ -131,36 +163,6 @@
                 picker.resumeScanning();
             })
             .catch(alert);
-
-        function getBookDetails(isbn) {
-
-            // Query the book database by ISBN code.
-            //isbn = isbn || "9781451648546"; // Steve Jobs book 
-
-            var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
-
-            var response = UrlFetchApp.fetch(url);
-            var results = JSON.parse(response);
-
-            if (results.totalItems) {
-
-                // There'll be only 1 book per ISBN
-                var book = results.items[0];
-                var title = (book["volumeInfo"]["title"]);
-                var subtitle = (book["volumeInfo"]["subtitle"]);
-                var authors = (book["volumeInfo"]["authors"]);
-                var printType = (book["volumeInfo"]["printType"]);
-                var pageCount = (book["volumeInfo"]["pageCount"]);
-                var publisher = (book["volumeInfo"]["publisher"]);
-                var publishedDate = (book["volumeInfo"]["publishedDate"]);
-                var webReaderLink = (book["accessInfo"]["webReaderLink"]);
-
-                // For debugging
-                console.log(book);
-
-            }
-
-        }
 
         // Register the Service Worker
         if ('serviceWorker' in navigator) {
