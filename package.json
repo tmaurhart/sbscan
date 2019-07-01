@@ -1,0 +1,26 @@
+{
+  "name": "sbscan",
+  "version": "1.0.0",
+  "description": "SB Scanner",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "start": "browser-sync start --server ./docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tmaurhart/sbscan.git"
+  },
+  "author": "Thomas Maurhart",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tmaurhart/sbscan/issues"
+  },
+  "homepage": "https://github.com/tmaurhart/sbscan#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.26.5"
+  }
+}
