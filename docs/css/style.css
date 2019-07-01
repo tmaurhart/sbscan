@@ -1,7 +1,29 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 20px;
     font-family: 'Open Sans', sans-serif;
+}
+
+header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+header #logo {
+    width: 100px;
+    margin: 0 20px 0 0;
+    float: left;
+}
+
+header img {
+    width: auto;
+    max-width: 100%;
+}
+
+header h1 {
+    color: #5c546a;
+    float: left;
 }
 
 #scandit-barcode-picker {
