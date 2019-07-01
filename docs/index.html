@@ -98,7 +98,7 @@
             var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
 
             // Replace ./data.json with your JSON feed
-            fetch(url)
+            /*fetch(url)
                 .then(response => {
                     return response.json()
                 })
@@ -107,6 +107,16 @@
                     console.log(data)
                 })
                 .catch(err => {
+                    // Do something for an error here
+                });*/
+
+            fetch(url)
+                .then(function (response) {
+                    return response.json();
+                })
+                .then(function (myJson) {
+                    console.log(JSON.stringify(myJson));
+                }).catch(err => {
                     // Do something for an error here
                 });
         }
