@@ -136,7 +136,7 @@
         function getBookDetails(isbn) {
 
             // Query the book database by ISBN code.
-            isbn = isbn || "9781451648546"; // Steve Jobs book 
+            //isbn = isbn || "9781451648546"; // Steve Jobs book 
 
             var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
 
@@ -157,7 +157,7 @@
                 var webReaderLink = (book["accessInfo"]["webReaderLink"]);
 
                 // For debugging
-                Logger.log(book);
+                console.log(book);
 
             }
 
