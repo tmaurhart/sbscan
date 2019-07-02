@@ -150,7 +150,9 @@
 
         function getBook(isbn) {
 
-            var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;           
+            var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
+            //var url = "https://www.googleapis.com/books/v1/volumes?fields=kind,item&q=isbn:" + isbn;
+                    
 
             fetch(url)
                 .then(function (response) {
