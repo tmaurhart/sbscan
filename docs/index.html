@@ -16,56 +16,89 @@
     <meta name="theme-color" content="#ffffff">
 
     <script src="js/scandit-sdk@4.x"></script>
-
+    
 </head>
 
 <body>
-    <header>
-        <div id="logo">
-            <img src="images/logo.png" alt="ISBN-Scanner">
-        </div>
-        <h1>ISBN-Scanner</h1>
-    </header>
-    <div id="scandit-barcode-picker"></div>
-    <div id="input-container">
-        <input id="scan-input" type="text" placeholder="Search">
-        <button id="scan" onclick="scan()">
-            <svg xmlns="http://www.w3.org/2000/svg" width="127" height="127" viewBox="0 0 127 127">
-                <g fill="none" fill-rule="evenodd">
-                    <g class="base" fill="#000000">
-                        <g transform="translate(16 70)">
-                            <polygon points="26 37 43 37 43 0 26 0" />
-                            <polygon points="85 37 94 37 94 0 85 0" />
-                            <polygon points="0 37 9 37 9 0 0 0" />
-                            <polygon points="11 37 20 37 20 0 11 0" />
-                            <polygon points="74 37 83 37 83 0 74 0" />
-                            <polygon points="63 37 72 37 72 0 63 0" />
-                            <polygon points="46 37 55 37 55 0 46 0" />
-                        </g>
-                        <g transform="translate(16 20)">
-                            <polygon points="26 37 43 37 43 0 26 0" />
-                            <polygon points="85 37 94 37 94 0 85 0" />
-                            <polygon points="0 37 9 37 9 0 0 0" />
-                            <polygon points="11 37 20 37 20 0 11 0" />
-                            <polygon points="74 37 83 37 83 0 74 0" />
-                            <polygon points="63 37 72 37 72 0 63 0" />
-                            <polygon points="46 37 55 37 55 0 46 0" />
-                        </g>
-                        <g fill-rule="nonzero">
-                            <polygon points="126 0 94 0 94 3.693 122.307 3.693 122.307 32 126 32" />
-                            <polygon points="3.693 3.693 32 3.693 32 0 0 0 0 32 3.693 32" />
-                            <polygon points="122.307 123.307 94 123.307 94 127 126 127 126 95 122.307 95" />
-                            <polygon points="0 127 32 127 32 123.307 3.693 123.307 3.693 95 0 95" />
-                        </g>
-                    </g>
-                    <polygon class="scanline" fill="#2EC1CE" fill-rule="nonzero" points="0 62 0 65 127 65 127 62" />
-                </g>
-            </svg>
-        </button>
-    </div>
-
-    <div id="myData"></div>
-
+	<div id="wrapper" class="flexcontainer">
+		
+		<header class="flex-item">
+			<div id="logo">
+				<img src="images/logo.png" alt="ISBN-Scanner">
+			</div>
+			<h1>ISBN-Scanner</h1>
+		</header>
+		
+		<main>
+		
+			<section class="searchBox">
+			
+				<div id="scandit-barcode-picker"></div>
+				<div id="input-container">
+					<input id="scan-input" type="text" placeholder="Search">
+					<button id="scan" onclick="scan()">
+						<svg xmlns="http://www.w3.org/2000/svg" width="127" height="127" viewBox="0 0 127 127">
+							<g fill="none" fill-rule="evenodd">
+								<g class="base" fill="#000000">
+									<g transform="translate(16 70)">
+										<polygon points="26 37 43 37 43 0 26 0" />
+										<polygon points="85 37 94 37 94 0 85 0" />
+										<polygon points="0 37 9 37 9 0 0 0" />
+										<polygon points="11 37 20 37 20 0 11 0" />
+										<polygon points="74 37 83 37 83 0 74 0" />
+										<polygon points="63 37 72 37 72 0 63 0" />
+										<polygon points="46 37 55 37 55 0 46 0" />
+									</g>
+									<g transform="translate(16 20)">
+										<polygon points="26 37 43 37 43 0 26 0" />
+										<polygon points="85 37 94 37 94 0 85 0" />
+										<polygon points="0 37 9 37 9 0 0 0" />
+										<polygon points="11 37 20 37 20 0 11 0" />
+										<polygon points="74 37 83 37 83 0 74 0" />
+										<polygon points="63 37 72 37 72 0 63 0" />
+										<polygon points="46 37 55 37 55 0 46 0" />
+									</g>
+									<g fill-rule="nonzero">
+										<polygon points="126 0 94 0 94 3.693 122.307 3.693 122.307 32 126 32" />
+										<polygon points="3.693 3.693 32 3.693 32 0 0 0 0 32 3.693 32" />
+										<polygon points="122.307 123.307 94 123.307 94 127 126 127 126 95 122.307 95" />
+										<polygon points="0 127 32 127 32 123.307 3.693 123.307 3.693 95 0 95" />
+									</g>
+								</g>
+								<polygon class="scanline" fill="#2EC1CE" fill-rule="nonzero" points="0 62 0 65 127 65 127 62" />
+							</g>
+						</svg>
+					</button>
+				</div>
+		
+			</section>
+		
+			<section>
+				<div id="myData">
+			
+					<table>
+						<thead>
+							<tr>
+								<th>#</th>
+								<th>Titel</th>
+								<th>Jahr</th>
+								<th>ISBN</th>
+							</tr>
+						</thead>
+						<tbody id="result"></tbody>
+					</table>
+			
+				</div>
+			</section>
+		
+		</main>
+		
+		<footer>
+			&copy; 2019 by Thomas Maurhart
+		</footer>
+		
+	</div>
+	
     <script>
         function scan() {
             startScanning();
@@ -96,13 +129,21 @@
         }
 
         function handleResponse(response) {
-            var mainContainer = document.getElementById("myData");
+            var mainContainer = document.getElementById("result");
             
             for (var i = 0; i < response.items.length; i++) {
                 var item = response.items[i];
-                var div = document.createElement("div");
-                // in production code, item.text should have the HTML entities escaped.
-                div.innerHTML += "<br>Title: " + item.volumeInfo.title;
+                var div = document.createElement("tr");
+                
+                for (var i2 = 0; i2 < item.volumeInfo.industryIdentifiers.length; i2++) {                
+                	//var isbn = "<span class=isbn>" + item.volumeInfo.industryIdentifiers[i2].type + ": " + item.volumeInfo.industryIdentifiers[i2].identifier + "</span>";
+                }
+                
+                var isbn_13 = "<span class=\"isbntxt\">" + item.volumeInfo.industryIdentifiers[0].type + ": " + item.volumeInfo.industryIdentifiers[0].identifier + "</span>";
+                var isbn_10 = "<span class=\"isbntxt\">" + item.volumeInfo.industryIdentifiers[1].type + ": " + item.volumeInfo.industryIdentifiers[1].identifier + "</span>";
+                
+                div.innerHTML += "<td>" + i + "</td><td><label>" + item.volumeInfo.title + "</label><br>" + item.volumeInfo.subtitle + "<br>" + item.volumeInfo.authors + ", " + item.volumeInfo.publisher + "</span></td><td>" + item.volumeInfo.publishedDate + "</td><td>" + isbn_13 + isbn_10 + "</td>";
+                
                 mainContainer.appendChild(div);
             }
         }
