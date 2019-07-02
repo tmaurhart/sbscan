@@ -95,31 +95,21 @@
             }
         }
 
-        function appendData(data) {
+        function handleResponse(response) {
             var mainContainer = document.getElementById("myData");
-            for (var i = 0; i < data.length; i++) {
+            
+            for (var i = 0; i < response.items.length; i++) {
+                var item = response.items[i];
                 var div = document.createElement("div");
-                div.innerHTML = 'Name: ' + data[i].volumeInfo.title + ' ' + data[i].volumeInfo.subtitle;
+                // in production code, item.text should have the HTML entities escaped.
+                div.innerHTML += "<br>Title: " + item.volumeInfo.title;
                 mainContainer.appendChild(div);
             }
         }
 
         function getBook(isbn) {
 
-            var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;
-
-            // Replace ./data.json with your JSON feed
-            /*fetch(url)
-                .then(response => {
-                    return response.json()
-                })
-                .then(data => {
-                    // Work with JSON data here
-                    console.log(data)
-                })
-                .catch(err => {
-                    // Do something for an error here
-                });*/
+            var url = "https://www.googleapis.com/books/v1/volumes?q=isbn:" + isbn;           
 
             fetch(url)
                 .then(function (response) {
@@ -127,13 +117,7 @@
                 })
                 .then(function (myJson) {
                     console.log(JSON.stringify(myJson));
-                    appendData(myJson);
-
-                    //let commits = await response.json(); // read response body and parse as JSON
-
-                    //alert(commits[0].author.login);
-
-                    
+                    handleResponse(myJson);
                 }).catch(err => {
                     // Do something for an error here
                 });
@@ -164,9 +148,6 @@
 
                 // For debugging
                 //console.log(book);
-
-                alert(title);
-
             }
 
         }
