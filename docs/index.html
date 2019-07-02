@@ -62,10 +62,9 @@
                 </g>
             </svg>
         </button>
-
-        <div id="myData"></div>
-
     </div>
+
+    <div id="myData"></div>
 
     <script>
         function scan() {
@@ -100,7 +99,7 @@
             var mainContainer = document.getElementById("myData");
             for (var i = 0; i < data.length; i++) {
                 var div = document.createElement("div");
-                div.innerHTML = 'Name: ' + data[i].firstName + ' ' + data[i].lastName;
+                div.innerHTML = 'Name: ' + data[i].volumeInfo.title + ' ' + data[i].volumeInfo.subtitle;
                 mainContainer.appendChild(div);
             }
         }
@@ -127,7 +126,7 @@
                     return response.json();
                 })
                 .then(function (myJson) {
-                    //console.log(JSON.stringify(myJson));
+                    console.log(JSON.stringify(myJson));
                     appendData(myJson);
 
                     //let commits = await response.json(); // read response body and parse as JSON
