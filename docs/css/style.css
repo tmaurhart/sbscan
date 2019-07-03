@@ -60,6 +60,11 @@ header h1 {
     float: left;
 }
 
+header a:link, header a:visited, header a:hover {
+    color: #5c546a;
+    text-decoration: none;
+}
+
 footer {
 	font-size: 80%;
 }
