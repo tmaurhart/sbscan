@@ -8,6 +8,7 @@ self.addEventListener('install', function (e) {
                     'index.html',
                     'favicon.ico',
                     'css/style.css',
+                    'css/fonts.css',
                     //'js/scandit-sdk@4.x',
                     'icons/favicon.ico',
                     'icons/android-chrome-192x192.png',
