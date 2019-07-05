@@ -1,6 +1,4 @@
-function openIndexedDB(fileindex) {
-    // This works on all devices/browsers, and uses IndexedDBShim as a final fallback 
-    var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
+var indexedDB = window.indexedDB || window.mozIndexedDB || window.webkitIndexedDB || window.msIndexedDB || window.shimIndexedDB;
 
     var openDB = indexedDB.open("SBScanDatabase", 1);
 
@@ -11,8 +9,6 @@ function openIndexedDB(fileindex) {
         if (fileindex) db.index = db.store.createIndex("NameIndex", fileindex);
     };
 
-    return openDB;
-}
 
 function getStoreIndexedDB(openDB) {
     var db = {};
